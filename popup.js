@@ -95,6 +95,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  // 规范化 URL，确保是完整的 https 链接
+  function normalizeUrl(url) {
+    if (!url) return '';
+    
+    // 如果已经是完整 URL，直接返回
+    if (url.startsWith('https://') || url.startsWith('http://')) {
+      return url;
+    }
+    
+    // 如果是 // 开头的协议相对 URL
+    if (url.startsWith('//')) {
+      return 'https:' + url;
+    }
+    
+    // 如果是 / 开头的路径相对 URL
+    if (url.startsWith('/')) {
+      return 'https://www.bilibili.com' + url;
+    }
+    
+    // 其他情况，添加 https 前缀
+    return 'https://' + url;
+  }
+
   // 加载播放列表
   async function loadPlaylist() {
     content.innerHTML = `
@@ -196,7 +219,9 @@ document.addEventListener('DOMContentLoaded', function() {
       try {
         const author = item.modules?.module_author?.name || '未知作者';
         const title = item.modules?.module_dynamic?.major?.archive?.title;
-        const jumpUrl = item.modules?.module_dynamic?.major?.archive?.jump_url || '';
+        const rawUrl = item.modules?.module_dynamic?.major?.archive?.jump_url || '';
+        // 规范化 URL
+        const jumpUrl = normalizeUrl(rawUrl);
 
         if (title) {
           count++;
