@@ -1,63 +1,50 @@
-# Bilibili Dynamic Playlist
+# bilibili-playlist-extension
+哔哩哔哩播放列表增强浏览器扩展，为B站播放列表添加更多实用功能，优化播放列表的使用体验，提升B站视频浏览与播放的效率。
 
-A browser extension that displays video playlists from Bilibili dynamics.
+## 功能特点
+- 对B站原生播放列表进行功能拓展与体验优化
+- 轻量简洁，无冗余功能，专注播放列表核心体验提升
+- 支持自定义相关配置，适配个人使用习惯
+- 浏览器端本地运行，无需额外服务，安全高效
 
-## Features
+## 目录结构
+本项目为标准的浏览器扩展开发结构，核心文件分工明确，便于维护与二次开发：
+bilibili-playlist-extension/
+├── icons/          # 扩展图标资源文件夹
+├── background.js   # 扩展后台运行脚本
+├── manifest.json   # 扩展配置清单（核心配置文件）
+├── LICENSE         # 开源许可证文件
+├── options.html    # 扩展设置页面html
+├── options.js      # 扩展设置页面交互脚本
+├── popup.html      # 扩展弹窗页面html
+└── popup.js        # 扩展弹窗页面交互脚本
 
-- Display videos from your Bilibili dynamics feed
-- Fixed video playback links pointing to actual video pages
-- Customizable settings (max items, refresh interval)
-- Chinese interface
+## 安装方法
+### 开发模式安装（Chrome/Edge等Chromium内核浏览器）
+1. 克隆本项目到本地：
+git clone https://github.com/DaMaoNi/bilibili-playlist-extension.git
+2. 打开浏览器，进入扩展管理页面（Chrome：chrome://extensions/，Edge：edge://extensions/）
+3. 开启页面右上角的**开发者模式**
+4. 点击**加载已解压的扩展程序**，选择克隆到本地的项目文件夹，完成安装
 
-## Installation
+### 其他浏览器
+基于标准Web Extension规范开发，可在Firefox等支持该规范的浏览器中，通过对应开发模式加载解压后的扩展文件夹安装。
 
-1. Download or clone this repository
-2. Open Edge/Chrome browser and navigate to `edge://extensions/` or `chrome://extensions/`
-3. Enable **Developer mode** (toggle in the bottom-left corner)
-4. Click **Load unpacked** button
-5. Select the extension folder (the one containing `manifest.json`)
+## 使用说明
+1. 安装完成后，浏览器工具栏会出现本扩展图标
+2. 打开B站任意带有播放列表的视频页面，扩展将自动生效
+3. 点击工具栏扩展图标，可通过**popup弹窗**快速操作核心功能
+4. 右键扩展图标选择**选项**，进入配置页面可自定义扩展相关设置
 
-## Usage
+## 开发与修改
+1. 本扩展基于原生JavaScript开发，无额外框架依赖，可直接修改源码
+2. 核心配置修改：编辑manifest.json可调整扩展权限、图标、版本等基础信息
+3. 功能逻辑修改：根据需求调整background.js（后台逻辑）、popup.js（弹窗交互）、options.js（设置页交互）
+4. 页面样式/结构修改：编辑popup.html、options.html调整对应页面布局
+5. 修改后，在浏览器扩展管理页面点击**刷新**，即可生效修改
 
-1. Make sure you're logged in at [bilibili.com](https://www.bilibili.com)
-2. Click the extension icon in the toolbar
-3. The video list from your dynamics feed will load automatically
-4. Click the "播放" (Play) button to open any video
+## 许可证
+本项目开源，许可证信息详见项目根目录下的**LICENSE**文件。
 
-## Configuration
-
-Click the ⚙️ icon in the popup window to access settings:
-
-| Setting | Description | Default |
-|---------|-------------|---------|
-| Custom API URL | Use a custom API endpoint | Default Bilibili API |
-| Max Items | Maximum videos to display (10-100) | 50 |
-| Auto Refresh Interval | Refresh interval in minutes (0 = disabled) | 0 |
-
-## Troubleshooting
-
-### "未检测到登录状态" Error
-
-1. Make sure you're logged in at bilibili.com
-2. Check that cookies are not blocked
-3. Refresh the extension page and try again
-
-### "暂无动态数据" Message
-
-- Follow more content creators who post videos
-- Check if your dynamics feed shows content on the Bilibili homepage
-
-## Files
-
-```
-bilibili-dynamic-playlist/
-├── manifest.json        # Extension manifest
-├── background.js        # Service worker
-├── popup.html/js        # Popup interface
-├── options.html/js      # Settings page
-└── icons/               # Extension icons
-```
-
-## License
-
-MIT License
+## 贡献
+欢迎提交Issue反馈问题或提出功能建议，也可提交PR参与项目开发，共同完善B站播放列表增强功能。
