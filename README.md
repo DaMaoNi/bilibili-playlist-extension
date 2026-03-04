@@ -7,18 +7,6 @@
 - 支持自定义相关配置，适配个人使用习惯
 - 浏览器端本地运行，无需额外服务，安全高效
 
-## 目录结构
-本项目为标准的浏览器扩展开发结构，核心文件分工明确，便于维护与二次开发：
-bilibili-playlist-extension/
-├── icons/          # 扩展图标资源文件夹
-├── background.js   # 扩展后台运行脚本
-├── manifest.json   # 扩展配置清单（核心配置文件）
-├── LICENSE         # 开源许可证文件
-├── options.html    # 扩展设置页面html
-├── options.js      # 扩展设置页面交互脚本
-├── popup.html      # 扩展弹窗页面html
-└── popup.js        # 扩展弹窗页面交互脚本
-
 ## 安装方法
 ### 开发模式安装（Chrome/Edge等Chromium内核浏览器）
 1. 克隆本项目到本地：
